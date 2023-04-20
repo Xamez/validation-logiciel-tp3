@@ -4,6 +4,7 @@
   "description": "Chat Bot IO v2",
   "main": "index.js",
   "scripts": {
+    "test-api": "npx jest ./test-api --forceExit --detectOpenHandles",
     "start": "npx webpack-dev-server --mode development",
     "api-start": "node ./api/index.js",
     "dist": "npx webpack --mode production --progress=profile",
@@ -50,6 +51,7 @@
     "helmet": "^5.0.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.4",
-    "passport": "^0.6.0"
+    "passport": "^0.6.0",
+    "supertest": "^6.3.3"
   }
 }

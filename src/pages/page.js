@@ -4,6 +4,7 @@ const Page = class {
   constructor(body) {
     this.body = body;
   }
+
   renderHeader() {
     return `
       <header class="container-fluid">

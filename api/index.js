@@ -1,4 +1,5 @@
-const Server = require('./app/server.js')
+const Server = require('./app/server');
+
 const server = new Server();
 
 server.run();

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const Schema = new mongoose.Schema({
   name: {
@@ -19,10 +19,10 @@ const Schema = new mongoose.Schema({
   versionKey: false
 }).set('toJSON', {
   transform: (doc, ret) => {
-    ret.id = ret._id
+    ret.id = ret._id;
 
-    delete ret._id
+    delete ret._id;
   }
-})
+});
 
-module.exports = Schema
+module.exports = Schema;

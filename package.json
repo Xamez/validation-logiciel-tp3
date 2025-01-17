@@ -4,10 +4,7 @@
   "description": "Chat Bot IO v2",
   "main": "index.js",
   "scripts": {
-    "pm2-start": "npx pm2 start ./api/index.js --name chatbot",
-    "pm2-monit": "npx pm2 monit chatbot",
-    "pm2-stop": "npx pm2 delete chatbot",
-    "test-api": "npx jest ./test-api --forceExit --detectOpenHandles",
+    "api-test": "npx jest ./test-api --forceExit --detectOpenHandles",
     "start": "npx webpack-dev-server --mode development",
     "api-start": "node ./api/index.js",
     "dist": "npx webpack --mode production --progress=profile",

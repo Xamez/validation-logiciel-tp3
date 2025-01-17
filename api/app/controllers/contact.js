@@ -69,7 +69,6 @@ const Contact = class Contact {
   delete() {
     this.app.delete('/contact/:id', (req, res) => {
       try {
-        console.log(req.params);
         this.ContactModel.findByIdAndDelete(req.params.id).then((contact) => {
           res.status(200).json(contact || {});
         }).catch(() => {

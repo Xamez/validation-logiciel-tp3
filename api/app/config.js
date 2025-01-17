@@ -2,11 +2,11 @@ module.exports = {
   development: {
     type: 'development',
     port: 3000,
-    mongodb: 'mongodb+srv://admin:admin@chatbot.wn9v4.mongodb.net/'
+    mongodb: 'mongodb://admin:admin@localhost:27017'
   },
   production: {
     type: 'production',
     port: 3000,
-    mongodb: 'mongodb+srv://admin:admin@chatbot.wn9v4.mongodb.net/'
+    mongodb: 'mongodb://admin:admin@localhost:27017'
   }
 };

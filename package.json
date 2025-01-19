@@ -4,7 +4,7 @@
   "description": "Chat Bot IO v2",
   "main": "index.js",
   "scripts": {
-    "api-test": "npx jest ./test-api --forceExit --detectOpenHandles",
+    "api-test": "npx jest test-api/tests/* --forceExit --detectOpenHandles",
     "start": "npx webpack-dev-server --mode development",
     "api-start": "node --max-old-space-size=8192 ./api/index.js",
     "dist": "npx webpack --mode production --progress=profile",
@@ -18,6 +18,11 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/xzen/chat-bot-io-v2/issues"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./test-api/jest.setup.js"
+    ]
   },
   "homepage": "https://github.com/xzen/chat-bot-io-v2#readme",
   "devDependencies": {

@@ -1,42 +1,34 @@
-const DURATION = 1 * 60 * 1000;
-const USERS = 500;
+const app = 'http://localhost:3000';
+const TEST_DURATION_IN_MS = 10 * 60 * 1000; // 10 minutes
+const NUMBER_OF_USERS = 5; // 5 Users
 
-const performanceResults = {};
+const executeEndpointTest = async (testFn, duration) => {
+    const endTime = Date.now() + duration;
+    const promises = [];
 
-async function runTestWhile(testFunction) {
-    const start = Date.now();
-    const responseTimes = [];
+    const executeForUser = async () => {
+        while (Date.now() < endTime) {
+            const start = Date.now();
+            try {
+                await testFn();
+            } catch (error) {
+                throw error;
+            } finally {
+                const responseTime = Date.now() - start;
+                global.responseTimes.push(responseTime);
+            }
+        }
+    };
 
-    while (Date.now() - start < DURATION) {
-        const testStart = Date.now();
-        await testFunction();
-        const testEnd = Date.now();
-        responseTimes.push(testEnd - testStart);
+    for (let i = 0; i < NUMBER_OF_USERS; i++) {
+        promises.push(executeForUser());
     }
 
-    return responseTimes;
-}
-
-async function measureTestPerformance(routeName, testFunction) {
-    const userTasks = Array.from({ length: USERS }, () =>
-        runTestWhile(testFunction)
-    );
-
-    const results = await Promise.all(userTasks);
-    const allResponseTimes = results.flat();
-
-    const total = allResponseTimes.reduce((sum, time) => sum + time, 0);
-    const average = total / allResponseTimes.length;
-
-    performanceResults[routeName] = {
-        call: allResponseTimes.length,
-        time: average.toFixed(2)
-    };
-    return average;
-}
+    await Promise.all(promises);
+};
 
 module.exports = {
-    measureTestPerformance,
-    performanceResults,
-    DURATION
-}
+    app,
+    TEST_DURATION_IN_MS,
+    executeEndpointTest
+};

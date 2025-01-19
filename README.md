@@ -27,4 +27,4 @@
 
 > NOTE: Occasionally, the api crashes due to a heap overrun during testing, causing an error in subsequent tests.
 
-We can see that as the load increases, delays increase exponentially.
+We can see that as the load increases, delays increase exponentially, as well as ram usage

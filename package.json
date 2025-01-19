@@ -6,7 +6,7 @@
   "scripts": {
     "api-test": "npx jest ./test-api --forceExit --detectOpenHandles",
     "start": "npx webpack-dev-server --mode development",
-    "api-start": "node ./api/index.js",
+    "api-start": "node --max-old-space-size=8192 ./api/index.js",
     "dist": "npx webpack --mode production --progress=profile",
     "lint": "eslint ."
   },
